@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 268343900296090228}
   - component: {fileID: 8317785356857192589}
   - component: {fileID: 1256232873557096606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall_Gate_Col
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1649918738980708211}
   m_RootOrder: 0
@@ -52,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -106,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649918738980708211}
   - component: {fileID: 5818562691647285250}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall_Gate_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +125,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8654685968932133697}
   - {fileID: 692015267285771414}
@@ -166,7 +169,7 @@ GameObject:
   - component: {fileID: 692015267285771414}
   - component: {fileID: 9145258553362350456}
   - component: {fileID: 9121661843794856128}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall_Gate_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +186,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1649918738980708211}
   m_RootOrder: 1
@@ -206,6 +210,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -249,7 +254,7 @@ GameObject:
   - component: {fileID: 3787416477080770539}
   - component: {fileID: 2782538240734902883}
   - component: {fileID: 6817521028757452978}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall_Gate_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,6 +271,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1649918738980708211}
   m_RootOrder: 2
@@ -289,6 +295,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -328,6 +335,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649918738980708211}
     m_Modifications:
+    - target: {fileID: 1145703738933261489, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223129543041402806, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1449571327604099949, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -376,6 +391,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate_Door
       objectReference: {fileID: 0}
+    - target: {fileID: 2258055887222428119, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861786566655861047, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
 --- !u!4 &2315688071084865721 stripped
@@ -390,6 +413,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649918738980708211}
     m_Modifications:
+    - target: {fileID: 1145703738933261489, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223129543041402806, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1449571327604099949, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -437,6 +468,14 @@ PrefabInstance:
     - target: {fileID: 2258055887222428119, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
       propertyPath: m_Name
       value: Gate_Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258055887222428119, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861786566655861047, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9acb6ff1b83dffe4a9f6909714674574, type: 3}

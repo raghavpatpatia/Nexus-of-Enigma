@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3018201377998433134}
   - component: {fileID: 1078036533426127203}
   - component: {fileID: 8712569182221258760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_COL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9179456442626553829}
   m_RootOrder: 0
@@ -52,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -107,7 +109,7 @@ GameObject:
   - component: {fileID: 4298237029069519410}
   - component: {fileID: 2118362262316912661}
   - component: {fileID: 4669059396131818729}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +126,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9179456442626553829}
   m_RootOrder: 1
@@ -147,6 +150,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -192,7 +196,7 @@ GameObject:
   - component: {fileID: 1853591242866134770}
   - component: {fileID: 2080501480299809575}
   - component: {fileID: 4260871751054334173}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,6 +213,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9179456442626553829}
   m_RootOrder: 2
@@ -232,6 +237,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -276,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9179456442626553829}
   - component: {fileID: 4123579094420127892}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,6 +299,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5387727181554966745}
   - {fileID: 4298237029069519410}
@@ -331,9 +338,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9179456442626553829}
     m_Modifications:
+    - target: {fileID: 145990693096528644, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1516016719246000028, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
       propertyPath: m_Name
       value: Tower2_T2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516016719246000028, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2180350799644042534, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
       propertyPath: m_RootOrder
@@ -378,6 +393,14 @@ PrefabInstance:
     - target: {fileID: 2180350799644042534, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521100286119052891, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9055154554153788941, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dad4a38c42e646a45b2da5a4b983b3a1, type: 3}

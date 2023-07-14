@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2045183728755260869}
   - component: {fileID: 4784722339456714102}
   - component: {fileID: 216772615990760927}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8715690842050147842}
   m_RootOrder: 1
@@ -52,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -111,7 +113,7 @@ GameObject:
   - component: {fileID: 6711630695798043615}
   - component: {fileID: 7300126104487819055}
   - component: {fileID: 5064494655973580183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower1_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +130,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8715690842050147842}
   m_RootOrder: 0
@@ -151,6 +154,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -208,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8715690842050147842}
   - component: {fileID: 4516623402719019379}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,6 +229,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5961919156835375917}
   - {fileID: 8171660440432486373}

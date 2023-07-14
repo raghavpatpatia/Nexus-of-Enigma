@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1094744830333148018}
   - component: {fileID: 5290409281168698371}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerS_Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4702261082815189332}
   - {fileID: 3919070474069277316}
@@ -68,7 +69,7 @@ GameObject:
   - component: {fileID: 3919070474069277316}
   - component: {fileID: 1593199495115191884}
   - component: {fileID: 6875653655273175775}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerS_Roof_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,6 +86,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1094744830333148018}
   m_RootOrder: 1
@@ -108,6 +110,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -151,7 +154,7 @@ GameObject:
   - component: {fileID: 5459967286171413161}
   - component: {fileID: 6142883227551761251}
   - component: {fileID: 4744257121856155899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerS_Roof_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +171,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1094744830333148018}
   m_RootOrder: 2
@@ -191,6 +195,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -235,7 +240,7 @@ GameObject:
   - component: {fileID: 8617090396960502955}
   - component: {fileID: 3403612688369372260}
   - component: {fileID: 629353729905048727}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerS_Roof_Col
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +257,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1094744830333148018}
   m_RootOrder: 0
@@ -275,6 +281,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

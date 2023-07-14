@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1342826076051931826}
   - component: {fileID: 7252066850649419667}
   - component: {fileID: 2311519431468490219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_T2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2180350799644042534}
   m_RootOrder: 2
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -92,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2180350799644042534}
   - component: {fileID: 6347883225729929815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_T2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +111,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 185035825546175196}
   - {fileID: 5425525026308354462}
@@ -151,7 +154,7 @@ GameObject:
   - component: {fileID: 930856728154981407}
   - component: {fileID: 7856972882935481065}
   - component: {fileID: 1857894264407114447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_T2_COL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +171,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2180350799644042534}
   m_RootOrder: 0
@@ -191,6 +195,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -246,7 +251,7 @@ GameObject:
   - component: {fileID: 5425525026308354462}
   - component: {fileID: 1774945127060778796}
   - component: {fileID: 3266057590108535271}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower2_T2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,6 +268,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2180350799644042534}
   m_RootOrder: 1
@@ -286,6 +292,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
