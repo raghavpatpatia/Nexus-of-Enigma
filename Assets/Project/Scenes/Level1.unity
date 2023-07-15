@@ -505,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd683ef415d6a3a45aa397412aca44a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd683ef415d6a3a45aa397412aca44a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -675,7 +675,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 694538894}
-  speed: 5
+  walkSpeed: 2
+  runSpeed: 5
   gravity: -9.81
   turnSmoothTime: 0.1
   cam: {fileID: 908566499}
@@ -2665,7 +2666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908566496}
   m_LocalRotation: {x: 0.114682645, y: 0.00000004273214, z: -0.000000004933183, w: 0.9934022}
-  m_LocalPosition: {x: 375, y: 1.5, z: 292.5}
+  m_LocalPosition: {x: 375, y: 1.4, z: 292.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3217,7 +3218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349360369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 375, y: 1.5, z: 292.5}
+  m_LocalPosition: {x: 375, y: 1.4, z: 292.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
