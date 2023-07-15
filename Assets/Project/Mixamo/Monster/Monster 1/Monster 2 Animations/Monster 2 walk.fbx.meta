@@ -526,18 +526,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Monster 1(Clone)
+    - name: Monster 2(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Ch30
-      parentName: Monster 1(Clone)
+      parentName: Monster 2(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Monster 1(Clone)
+      parentName: Monster 2(Clone)
       position: {x: 0.0000042659817, y: 0.99405295, z: 0.010124164}
       rotation: {x: 0.00000051044685, y: 0.0000011926338, z: -0.00003935688, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -873,7 +873,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6b0c56c4a4fbcf84d8734ce3e00e0034, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b6fbfd7fceb86b440ab5836fa57ceebe, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
