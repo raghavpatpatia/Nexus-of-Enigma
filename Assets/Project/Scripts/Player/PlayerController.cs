@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
             movementVector = Vector3.zero;
         }
 
-        //float animVertical = Mathf.Abs(vertical) > 0.1f ? vertical : 0;
-
         movementVector.y += gravity;
         characterController.Move(movementVector * Time.deltaTime);
         animator.SetFloat("Horizontal", horizontal);
