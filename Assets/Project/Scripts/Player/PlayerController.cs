@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] Transform cam;
+    [SerializeField] private VisualEffect slash;
     private float turnSmoothVelocity;
     private float horizontal;
     private float vertical;
     private Vector3 movementVector;
     private Animator animator;
+    private bool isAttacking = false;
+    private bool isAnimationCompleted = true;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        slash.Stop();
     }
 
     private void PlayerMovement()
@@ -46,8 +51,35 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", vertical);
     }
 
+    public void PlaySlashEffect()
+    {
+        slash.Play();
+    }
+
+    public void StopSlashEffect()
+    {
+        slash.Stop();
+    }
+
+    private void Attack()
+    {
+        if (Input.GetMouseButtonDown(0) && isAnimationCompleted)
+        {
+            isAnimationCompleted = false;
+            isAttacking = true;
+            animator.SetTrigger("isAttacking");
+        }
+
+        if (isAttacking && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+        {
+            isAnimationCompleted = true;
+            isAttacking = false;
+        }
+    }
+
     private void Update()
     {
         PlayerMovement();
+        Attack();
     }
 }
