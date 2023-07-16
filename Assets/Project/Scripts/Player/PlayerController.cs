@@ -4,12 +4,12 @@ using UnityEngine.VFX;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterController characterController;
-    [SerializeField] float walkSpeed = 2f;
-    [SerializeField] float runSpeed = 5f;
+    [SerializeField] float speed = 5f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] Transform cam;
     [SerializeField] private VisualEffect slash;
+    [SerializeField] private GameObject tiger;
     private float turnSmoothVelocity;
     private float horizontal;
     private float vertical;
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0);
             Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            float speed = direction.magnitude >= 0.5 ? runSpeed : walkSpeed;
             movementVector = moveDirection.normalized * speed;
         }
         else
@@ -77,9 +76,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void TigerSummon()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Vector3 offset = transform.forward * 2;
+            Vector3 spawnPosition = transform.position + offset;
+            Instantiate(tiger, spawnPosition, Quaternion.identity);
+        }
+    }
+
     private void Update()
     {
         PlayerMovement();
         Attack();
+        TigerSummon();
     }
 }
