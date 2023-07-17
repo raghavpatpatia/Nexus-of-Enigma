@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -9,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] Transform cam;
     [SerializeField] private VisualEffect slash;
-    [SerializeField] private GameObject tiger;
+    [SerializeField] float flySpeed = 3f;
     private float turnSmoothVelocity;
     private float horizontal;
     private float vertical;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     private bool isAnimationCompleted = true;
+    private IEnumerator flyPowerup;
 
     private void Start()
     {
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", vertical);
     }
 
+
     public void PlaySlashEffect()
     {
         slash.Play();
@@ -76,20 +80,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void TigerSummon()
+    private void PlayerFly()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        if (flyPowerup != null)
         {
-            Vector3 offset = transform.forward * 2;
-            Vector3 spawnPosition = transform.position + offset;
-            Instantiate(tiger, spawnPosition, Quaternion.identity);
+            StopCoroutine(flyPowerup);
         }
+        flyPowerup = Fly();
+        StartCoroutine(flyPowerup);
+    }
+
+    private IEnumerator Fly()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            while (this.transform.position.y < 24f)
+            {
+                gravity = 2 * Time.deltaTime * flySpeed;
+            }
+            gravity = 0f;
+            yield return new WaitForSeconds(5f);
+            gravity = -9.81f;
+        }
+
     }
 
     private void Update()
     {
         PlayerMovement();
         Attack();
-        TigerSummon();
+        PlayerFly();
     }
 }

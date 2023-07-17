@@ -6,7 +6,6 @@ public class Tiger : MonoBehaviour
     [SerializeField] private float erodeRate = 0.03f;
     [SerializeField] private float erodeRefreshRate = 0.01f;
     [SerializeField] private float erodeDelay = 3f;
-    [SerializeField] private float speed = 10f;
     [SerializeField] private SkinnedMeshRenderer erodeObject;
     [SerializeField] private float destroyTime = 3.5f;
     private IEnumerator summon;
@@ -15,12 +14,6 @@ public class Tiger : MonoBehaviour
     {
         TigerCoroutine();
         Destroy(gameObject, destroyTime);
-    }
-
-    private void Update()
-    {
-        Vector3 movement = transform.forward * speed * Time.deltaTime;
-        transform.position += movement;
     }
 
     private void TigerCoroutine()
