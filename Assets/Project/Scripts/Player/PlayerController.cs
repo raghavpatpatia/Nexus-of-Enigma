@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] Transform cam;
     [SerializeField] private VisualEffect slash;
+    [SerializeField] private VisualEffect cometShower;
     [SerializeField] float flySpeed = 3f;
     private float turnSmoothVelocity;
     private float horizontal;
@@ -19,15 +20,23 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private bool isAnimationCompleted = true;
     private bool isFlying = false;
+    private bool isCometShowerOnCooldown = false;
+    private bool isCometShowerActive = false;
+    private float cometShowerDuration = 3f;
+    private float cometShowerCooldown = 10f;
+    private float cometShowerStartTime;
+    private bool canMove = true;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         slash.Stop();
+        cometShower.Stop();
     }
 
     private void PlayerMovement()
     {
+        if (!canMove) return;
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -99,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator FlyRoutine()
     {
-        while (this.transform.position.y < 24f)
+        while (this.transform.position.y < 25f)
         {
             gravity = 1 * flySpeed;
             yield return null;
@@ -114,10 +123,52 @@ public class PlayerController : MonoBehaviour
         isFlying = false;
     }
 
+    private void CometPowerup()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            if (!isCometShowerOnCooldown && !isCometShowerActive)
+            {
+                StartCometShowerEffect();
+            }
+        }
+    }
+
+    private void StartCometShowerEffect()
+    {
+        canMove = false;
+        isCometShowerActive = true;
+        cometShower.Play();
+        cometShowerStartTime = Time.time;
+        StartCoroutine(CometShowerEffect());
+    }
+
+    private IEnumerator CometShowerEffect()
+    {
+        while (Time.time - cometShowerStartTime < cometShowerDuration)
+        {
+            canMove = false;
+            yield return null;
+        }
+
+        cometShower.Stop();
+        isCometShowerActive = false;
+        StartCoroutine(CometCooldown());
+    }
+
+    private IEnumerator CometCooldown()
+    {
+        canMove = true;
+        isCometShowerOnCooldown = true;
+        yield return new WaitForSeconds(cometShowerCooldown);
+        isCometShowerOnCooldown = false;
+    }
+
     private void Update()
     {
         PlayerMovement();
         Attack();
         PlayerFly();
+        CometPowerup();
     }
 }
