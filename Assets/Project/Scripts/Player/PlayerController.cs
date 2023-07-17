@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -19,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     private bool isAnimationCompleted = true;
-    private IEnumerator flyPowerup;
+    private bool isFlying = false;
 
     private void Start()
     {
@@ -47,12 +46,15 @@ public class PlayerController : MonoBehaviour
             movementVector = Vector3.zero;
         }
 
-        movementVector.y += gravity;
+        if (!isFlying)
+        {
+            movementVector.y += gravity;
+        }
+
         characterController.Move(movementVector * Time.deltaTime);
         animator.SetFloat("Horizontal", horizontal);
         animator.SetFloat("Vertical", vertical);
     }
-
 
     public void PlaySlashEffect()
     {
@@ -82,27 +84,34 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerFly()
     {
-        if (flyPowerup != null)
-        {
-            StopCoroutine(flyPowerup);
-        }
-        flyPowerup = Fly();
-        StartCoroutine(flyPowerup);
-    }
-
-    private IEnumerator Fly()
-    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            while (this.transform.position.y < 24f)
-            {
-                gravity = 2 * Time.deltaTime * flySpeed;
-            }
-            gravity = 0f;
-            yield return new WaitForSeconds(5f);
-            gravity = -9.81f;
+            isFlying = true;
+            StartCoroutine(FlyRoutine());
         }
 
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StopCoroutine(FlyRoutine());
+            StartCoroutine(ResetGravity());
+        }
+    }
+
+    private IEnumerator FlyRoutine()
+    {
+        while (this.transform.position.y < 24f)
+        {
+            gravity = 1 * flySpeed;
+            yield return null;
+        }
+        gravity = 0f;
+    }
+
+    private IEnumerator ResetGravity()
+    {
+        yield return new WaitForSeconds(1f);
+        gravity = -9.81f;
+        isFlying = false;
     }
 
     private void Update()
