@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isFlying = false;
     private bool isCometShowerOnCooldown = false;
     private bool isCometShowerActive = false;
-    private float cometShowerDuration = 3f;
+    private float cometShowerDuration = 5f;
     private float cometShowerCooldown = 10f;
     private float cometShowerStartTime;
     private bool canMove = true;
