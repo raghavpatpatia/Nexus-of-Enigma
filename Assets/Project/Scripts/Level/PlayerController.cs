@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private VisualEffect slash;
     [SerializeField] private VisualEffect cometShower;
     [SerializeField] float flySpeed = 3f;
+    // [SerializeField] float health = 100;
     private float turnSmoothVelocity;
     private float horizontal;
     private float vertical;
@@ -45,9 +46,15 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0, angle, 0);
-            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            targetAngle = Mathf.Repeat(targetAngle, 360f); // Ensure angle is within valid range (0 to 360 degrees)
+
+            float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            Quaternion targetRotation = Quaternion.Euler(0, smoothedAngle, 0);
+
+            // Rotate the player towards the target direction using LookRotation
+            transform.rotation = Quaternion.LookRotation(targetRotation * Vector3.forward);
+
+            Vector3 moveDirection = targetRotation * Vector3.forward;
             movementVector = moveDirection.normalized * speed;
         }
         else
@@ -64,6 +71,9 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", horizontal);
         animator.SetFloat("Vertical", vertical);
     }
+
+
+
 
     public void PlaySlashEffect()
     {
