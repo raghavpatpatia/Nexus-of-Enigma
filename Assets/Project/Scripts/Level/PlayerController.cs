@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private VisualEffect slash;
     [SerializeField] private VisualEffect cometShower;
     [SerializeField] float flySpeed = 3f;
-    // [SerializeField] float health = 100;
+    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] float health = 100;
+    private float currentHealth;
     private float turnSmoothVelocity;
     private float horizontal;
     private float vertical;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         slash.Stop();
         cometShower.Stop();
+        currentHealth = health;
     }
 
     private void PlayerMovement()
@@ -46,12 +49,11 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            targetAngle = Mathf.Repeat(targetAngle, 360f); // Ensure angle is within valid range (0 to 360 degrees)
+            targetAngle = Mathf.Repeat(targetAngle, 360f);
 
             float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             Quaternion targetRotation = Quaternion.Euler(0, smoothedAngle, 0);
 
-            // Rotate the player towards the target direction using LookRotation
             transform.rotation = Quaternion.LookRotation(targetRotation * Vector3.forward);
 
             Vector3 moveDirection = targetRotation * Vector3.forward;
@@ -71,9 +73,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", horizontal);
         animator.SetFloat("Vertical", vertical);
     }
-
-
-
 
     public void PlaySlashEffect()
     {
@@ -99,6 +98,22 @@ public class PlayerController : MonoBehaviour
             isAnimationCompleted = true;
             isAttacking = false;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log(currentHealth);
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        animator.SetTrigger("isDead");
+        Debug.Log("Player died");
     }
 
     private void PlayerFly()
@@ -139,6 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!isCometShowerOnCooldown && !isCometShowerActive)
             {
+                PerformAttack(25, 10f, enemyLayer, 20, 45);
                 StartCometShowerEffect();
             }
         }
@@ -174,11 +190,36 @@ public class PlayerController : MonoBehaviour
         isCometShowerOnCooldown = false;
     }
 
+    private void PerformAttack(int damage, float attackDistance, LayerMask enemyLayer, int rayCount, float spreadAngle)
+    {
+        for (int i = 0; i < rayCount; i++)
+        {
+            Vector3 rayDirection = Quaternion.Euler(0, Random.Range(-spreadAngle, spreadAngle), 0) * transform.forward;
+            Vector3 extendedEndPoint = transform.position + (transform.forward * 4f);
+            RaycastHit hit;
+            if (Physics.Raycast(extendedEndPoint, rayDirection, out hit, attackDistance, enemyLayer))
+            {
+                EnemyController enemyController = hit.collider.GetComponent<EnemyController>();
+                if (enemyController != null)
+                {
+                    enemyController.TakeDamage(damage);
+                }
+            }
+        }
+    }
+
+
     private void Update()
     {
         PlayerMovement();
         Attack();
         PlayerFly();
         CometPowerup();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (isAttacking)
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(15);
     }
 }

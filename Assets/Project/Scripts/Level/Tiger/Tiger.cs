@@ -37,4 +37,12 @@ public class Tiger : MonoBehaviour
             yield return new WaitForSeconds(erodeRefreshRate);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyController>() != null)
+        {
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage(20);
+        }
+    }
 }
