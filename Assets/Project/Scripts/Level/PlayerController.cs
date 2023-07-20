@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private VisualEffect cometShower;
     [SerializeField] float flySpeed = 3f;
     [SerializeField] LayerMask enemyLayer;
-    [SerializeField] float health = 100;
-    private float currentHealth;
+    [SerializeField] float health = 200;
+    [SerializeField] Slider healthSlider;
+    public float currentHealth { get; private set; }
     private float turnSmoothVelocity;
     private float horizontal;
     private float vertical;
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private float cometShowerCooldown = 10f;
     private float cometShowerStartTime;
     private bool canMove = true;
+    private bool isDead = false;
+    private bool isTakingDamage = false;
 
     private void Start()
     {
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
         slash.Stop();
         cometShower.Stop();
         currentHealth = health;
+        healthSlider.value = currentHealth;
     }
 
     private void PlayerMovement()
@@ -90,6 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             isAnimationCompleted = false;
             isAttacking = true;
+
             animator.SetTrigger("isAttacking");
         }
 
@@ -97,22 +103,27 @@ public class PlayerController : MonoBehaviour
         {
             isAnimationCompleted = true;
             isAttacking = false;
+            isTakingDamage = false;
         }
     }
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(currentHealth);
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+        if (!isDead)
         {
-            Die();
+            Debug.Log(currentHealth);
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
     private void Die()
     {
-        animator.SetTrigger("isDead");
+        SoundManager.Instance.PlayMusic(Sounds.GameOver);
+        isDead = true;
         Debug.Log("Player died");
     }
 
@@ -154,7 +165,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!isCometShowerOnCooldown && !isCometShowerActive)
             {
-                PerformAttack(25, 10f, enemyLayer, 20, 45);
+                PerformAttack(25, 10f, enemyLayer, 45, 45);
                 StartCometShowerEffect();
             }
         }
@@ -211,15 +222,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        PlayerMovement();
-        Attack();
-        PlayerFly();
-        CometPowerup();
+        healthSlider.value = currentHealth;
+        if (!isDead)
+        {
+            PlayerMovement();
+            Attack();
+            PlayerFly();
+            CometPowerup();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (isAttacking)
-            other.gameObject.GetComponent<EnemyController>().TakeDamage(15);
+        if (isAttacking && !isTakingDamage)
+        {
+            isTakingDamage = true;
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(10);
+        }
     }
 }

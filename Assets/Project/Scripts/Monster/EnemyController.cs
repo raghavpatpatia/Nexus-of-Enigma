@@ -1,17 +1,18 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     private Animator animator;
-    private Rigidbody rb;
     [SerializeField] private GameObject[] patrolPoints;
     [SerializeField] private int patrolDestination;
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float attackDistance = 2f;
-    [SerializeField] private float attackCooldown = 15f;
+    [SerializeField] private float attackCooldown = 10f;
     [SerializeField] private int maxHealth;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private int killPoints;
     private Transform playerTransform;
     private float attackCooldownTimer = 0f;
     private int currentHealth;
@@ -21,8 +22,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     private void MoveTowards(Vector3 targetPosition)
@@ -69,6 +70,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        healthSlider.value = currentHealth;
         if (!isDead)
         {
             if (playerTransform != null)
@@ -104,6 +106,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        SoundManager.Instance.PlayMusic(Sounds.EnemyHit);
         if (!isDead)
         {
             Debug.Log(currentHealth);
@@ -119,6 +122,7 @@ public class EnemyController : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("isDead");
+        GameManager.UpdateScore(killPoints);
         Destroy(gameObject, 5f);
     }
 

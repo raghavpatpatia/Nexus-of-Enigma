@@ -22,6 +22,7 @@ public class PanelChange : MonoBehaviour
 
     private void ChangePanel()
     {
+        SoundManager.Instance.PlayMusic(Sounds.ButtonClick);
         panel1.SetActive(false);
         panel2.SetActive(true);
     }

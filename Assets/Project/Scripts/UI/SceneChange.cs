@@ -16,6 +16,8 @@ public class SceneChange : MonoBehaviour
 
     private void ChangeScene()
     {
+        SoundManager.Instance.PlayMusic(Sounds.ButtonClick);
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneBuildIndex);
     }
 }

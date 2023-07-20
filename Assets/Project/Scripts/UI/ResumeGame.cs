@@ -15,6 +15,7 @@ public class ResumeGame : MonoBehaviour
 
     private void Resume()
     {
+        SoundManager.Instance.PlayMusic(Sounds.ButtonClick);
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }

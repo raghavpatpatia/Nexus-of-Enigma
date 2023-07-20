@@ -13,6 +13,7 @@ public class Quit : MonoBehaviour
 
     private void QuitGame()
     {
+        SoundManager.Instance.PlayMusic(Sounds.ButtonClick);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
