@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class EnemyController : MonoBehaviour
     private int currentHealth;
     private bool isDead = false;
     private bool isAttacking = false;
+    private bool canDamagePlayer = true;
+    private float damageCooldown = 3.0f;
 
     private void Start()
     {
@@ -126,6 +129,12 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
+    private IEnumerator ResetDamageCooldown()
+    {
+        yield return new WaitForSeconds(damageCooldown);
+        canDamagePlayer = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
@@ -136,8 +145,12 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (isAttacking)
+        if (isAttacking && canDamagePlayer)
+        {
+            canDamagePlayer = false;
             other.gameObject.GetComponent<PlayerController>().TakeDamage(10);
+            StartCoroutine(ResetDamageCooldown());
+        }
     }
 
     private void OnTriggerExit(Collider other)
